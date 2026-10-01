@@ -1,9 +1,12 @@
+'use client'
+import { useSession } from '@/lib/auth-client';
 import React from 'react';
 
 const ProfilePage = () => {
+    const {data:session} = useSession()
     return (
         <div>
-            this is profile
+           {`Welcome ${session?.user.name}`}
         </div>
     );
 };

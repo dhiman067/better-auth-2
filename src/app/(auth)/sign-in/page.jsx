@@ -1,5 +1,5 @@
 "use client";
-import { signIn } from "@/lib/auth-client";
+import { authClient, signIn } from "@/lib/auth-client";
 import { Check, Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, InputGroup, Label, TextField } from "@heroui/react";
 
@@ -29,8 +29,14 @@ const SignInPage = () => {
         }
     };
 
+    const handleGoogleSignIn = async()=>{
+        const googleSignInData = await authClient.signIn.social({
+            provider:'google'
+        })
+    }
+
     return (
-        <div className='flex items-center justify-center m-auto bg-[#222630] p-7 rounded-3xl'>
+        <div className='flex flex-col items-center justify-center m-auto bg-[#222630] p-7 rounded-3xl'>
             <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
                 <p>{errorMessage}</p>
                 <TextField
@@ -79,6 +85,8 @@ const SignInPage = () => {
                     </Button>
                 </div>
             </Form>
+            <p>or</p>
+            <Button onClick={handleGoogleSignIn}>Sign In With Google</Button>
         </div>
     );
 };

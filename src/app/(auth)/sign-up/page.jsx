@@ -1,7 +1,7 @@
 "use client";
 import { signUp } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
-import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { Button, Description, FieldError, Form, Input, Label, TextField, toast } from "@heroui/react";
 import React from 'react';
 
 const SignUpPage = () => {
@@ -21,6 +21,7 @@ const SignUpPage = () => {
         })
 
         console.log(signUpData,error);
+        toast.success(`Accout Created!`)
 
     };
     return (
